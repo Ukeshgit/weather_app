@@ -1,0 +1,62 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
+
+import '../constants/constants.dart';
+import 'geolocator.dart';
+
+class ApiHelper {
+  static const baseurl = "https://api.openweathermap.org/data/2.5";
+  static const weeklyWeatherUrl =
+      "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m";
+
+  static final dio = Dio();
+  static double lat = 0.0;
+  static double lon = 0.0;
+  //Get lat and lon
+  static Future<void> fetchLocation() async {
+    final location = await getLocation();
+    lat = location.latitude;
+    lon = location.longitude;
+  }
+
+  //current weather
+  static Future getCurrentWeather() async {
+    await fetchLocation();
+    final url = _constructionWeatherUrl();
+    final response = await fetchdata(url);
+    print(response);
+  }
+
+  //build url
+  static String _constructionWeatherUrl() {
+    return "$baseurl/weather?lat=$lat&lon=$lon&appid=${Constants.apiKey}&units=metric";
+  }
+
+  static String _constructForecaseUrl() {
+    return "$baseurl/forecast?lat=$lat&lon=$lon&appid=${Constants.apiKey}&units=metric";
+  }
+
+  static String weatherByCityUrl(String city_name) {
+    return "$baseurl/weather?q=$city_name&appid=${Constants.apiKey}&units=metric";
+  }
+
+  static String weeklyForecastUrl(String city_name) {
+    return "$weeklyWeatherUrl&latitude=$lat&longitude=$lon&timezone=auto";
+  }
+
+  //fetch data for a url
+  static Future<Map<String, dynamic>> fetchdata(String url) async {
+    try {
+      final response = await dio.get(url);
+      if (response.statusCode == 200) {
+        return response.data;
+      } else {
+        throw Exception("Error fetching data");
+      }
+    } catch (e) {
+      print("Error fetching data from a $url :$e");
+      throw Exception("Error fetching data");
+    }
+  }
+}
