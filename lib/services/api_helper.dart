@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:weather_app/models/weather.dart';
+import 'package:weather_app/models/weekly_weather.dart';
 
 import '../constants/constants.dart';
 import 'geolocator.dart';
@@ -15,17 +17,10 @@ class ApiHelper {
   static double lon = 0.0;
   //Get lat and lon
   static Future<void> fetchLocation() async {
+    //static method can only access the static variable
     final location = await getLocation();
     lat = location.latitude;
     lon = location.longitude;
-  }
-
-  //current weather
-  static Future getCurrentWeather() async {
-    await fetchLocation();
-    final url = _constructionWeatherUrl();
-    final response = await fetchdata(url);
-    print(response);
   }
 
   //build url
@@ -33,11 +28,11 @@ class ApiHelper {
     return "$baseurl/weather?lat=$lat&lon=$lon&appid=${Constants.apiKey}&units=metric";
   }
 
-  static String _constructForecaseUrl() {
+  static String _constructForecastUrl() {
     return "$baseurl/forecast?lat=$lat&lon=$lon&appid=${Constants.apiKey}&units=metric";
   }
 
-  static String weatherByCityUrl(String city_name) {
+  static String weatherByCityName(String city_name) {
     return "$baseurl/weather?q=$city_name&appid=${Constants.apiKey}&units=metric";
   }
 
@@ -58,5 +53,25 @@ class ApiHelper {
       print("Error fetching data from a $url :$e");
       throw Exception("Error fetching data");
     }
+  }
+
+  //current weather
+  static Future<Weather> getCurrentWeather() async {
+    await fetchLocation();
+    final url = _constructionWeatherUrl();
+    final response = await fetchdata(url);
+    print(response);
+
+    return Weather.fromJson(response);
+  }
+
+  static Future<WeeklyWeather> getWeeklyWeatherByCityName({
+    required String city_name,
+  }) async {
+    await fetchLocation();
+    final url = weeklyForecastUrl(city_name);
+    final response = await fetchdata(url);
+    print(response);
+    return WeeklyWeather.fromJson(response);
   }
 }
