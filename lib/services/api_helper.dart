@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:weather_app/models/hourly_weather.dart';
 import 'package:weather_app/models/weather.dart';
 import 'package:weather_app/models/weekly_weather.dart';
 
@@ -32,11 +33,11 @@ class ApiHelper {
     return "$baseurl/forecast?lat=$lat&lon=$lon&appid=${Constants.apiKey}&units=metric";
   }
 
-  static String weatherByCityName(String city_name) {
+  static String _constructWeatherByCityName(String city_name) {
     return "$baseurl/weather?q=$city_name&appid=${Constants.apiKey}&units=metric";
   }
 
-  static String weeklyForecastUrl(String city_name) {
+  static String _constructWeeklyForecastUrl() {
     return "$weeklyWeatherUrl&latitude=$lat&longitude=$lon&timezone=auto";
   }
 
@@ -60,18 +61,33 @@ class ApiHelper {
     await fetchLocation();
     final url = _constructionWeatherUrl();
     final response = await fetchdata(url);
-    print(response);
 
     return Weather.fromJson(response);
   }
 
-  static Future<WeeklyWeather> getWeeklyWeatherByCityName({
-    required String city_name,
-  }) async {
+  static Future getHourlyForecast() async {
     await fetchLocation();
-    final url = weeklyForecastUrl(city_name);
+    final url = _constructForecastUrl();
+    final response = await fetchdata(url);
+    print(response);
+    return HourlyWeather.fromJson(response);
+  }
+
+  static Future getWeeklyForecast() async {
+    await fetchLocation();
+    final url = _constructWeeklyForecastUrl();
     final response = await fetchdata(url);
     print(response);
     return WeeklyWeather.fromJson(response);
+  }
+
+  static Future<Weather> getWeatherByCityName({
+    required String city_name,
+  }) async {
+    await fetchLocation();
+    final url = _constructWeatherByCityName(city_name);
+    final response = await fetchdata(url);
+    print(response);
+    return Weather.fromJson(response);
   }
 }
