@@ -1,12 +1,9 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
+import 'package:weather_app/common/constants/constants.dart';
+import 'package:weather_app/common/services/geo_locator.dart';
 import 'package:weather_app/models/hourly_weather.dart';
 import 'package:weather_app/models/weather.dart';
 import 'package:weather_app/models/weekly_weather.dart';
-
-import '../constants/constants.dart';
-import 'geolocator.dart';
 
 class ApiHelper {
   static const baseurl = "https://api.openweathermap.org/data/2.5";

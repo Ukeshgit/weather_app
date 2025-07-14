@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_app/app/home/view/screen/home.dart';
-import 'package:weather_app/common/constants/services/api_helper.dart';
+import 'package:weather_app/common/services/api_helper.dart';
 
 void main() {
   runApp(ProviderScope(child: const MainApp()));

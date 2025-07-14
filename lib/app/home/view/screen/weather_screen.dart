@@ -24,7 +24,7 @@ class WeatherScreen extends ConsumerWidget {
                 SizedBox(width: double.infinity),
                 Column(
                   children: [
-                    // Text(data.name.toString(), style: TextStyles.h1),
+                    Text(data.name.toString(), style: TextStyles.h1),
                     SizedBox(height: 10),
                     Text(
                       DateTime.now().dateTime.toString(),
@@ -34,9 +34,9 @@ class WeatherScreen extends ConsumerWidget {
 
                     SizedBox(
                       height: 260,
-                      // child: Image.asset(
-                      //   "assets/icons/${data.weather[0].icon.replaceAll('n', 'd')}.png",
-                      // ),
+                      child: Image.asset(
+                        "assets/icons/${data.weather[0].icon.replaceAll('n', 'd')}.png",
+                      ),
                     ),
                   ],
                 ),
