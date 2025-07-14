@@ -62,7 +62,7 @@ class ApiHelper {
     return Weather.fromJson(response);
   }
 
-  static Future getHourlyForecast() async {
+  static Future<HourlyWeather> getHourlyForecast() async {
     await fetchLocation();
     final url = _constructForecastUrl();
     final response = await fetchdata(url);
