@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart' show immutable;
 
-import '/models/weather.dart';
+import 'weather.dart';
 
 @immutable
 class HourlyWeather {
@@ -23,9 +23,10 @@ class HourlyWeather {
       cod: json['cod'] ?? '',
       message: json['message'] ?? 0,
       cnt: json['cnt'] ?? 0,
-      list: (json['list'] as List<dynamic>)
-          .map((entry) => WeatherEntry.fromJson(entry))
-          .toList(),
+      list:
+          (json['list'] as List<dynamic>)
+              .map((entry) => WeatherEntry.fromJson(entry))
+              .toList(),
       city: json['city'] != null ? City.fromJson(json['city']) : null,
     );
   }
@@ -61,9 +62,10 @@ class WeatherEntry {
     return WeatherEntry(
       dt: json['dt'] ?? 0,
       main: Main.fromJson(json['main']),
-      weather: (json['weather'] as List<dynamic>)
-          .map((weatherData) => WeatherData.fromJson(weatherData))
-          .toList(),
+      weather:
+          (json['weather'] as List<dynamic>)
+              .map((weatherData) => WeatherData.fromJson(weatherData))
+              .toList(),
       clouds: Clouds.fromJson(json['clouds']),
       wind: Wind.fromJson(json['wind']),
       visibility: json['visibility'] ?? 0,
@@ -118,14 +120,10 @@ class Main {
 class Clouds {
   final int all;
 
-  const Clouds({
-    required this.all,
-  });
+  const Clouds({required this.all});
 
   factory Clouds.fromJson(Map<String, dynamic> json) {
-    return Clouds(
-      all: json['all'],
-    );
+    return Clouds(all: json['all']);
   }
 }
 
@@ -135,11 +133,7 @@ class Wind {
   final int deg;
   final double gust;
 
-  const Wind({
-    required this.speed,
-    required this.deg,
-    required this.gust,
-  });
+  const Wind({required this.speed, required this.deg, required this.gust});
 
   factory Wind.fromJson(Map<String, dynamic> json) {
     return Wind(
@@ -190,16 +184,10 @@ class Coord {
   final double lat;
   final double lon;
 
-  const Coord({
-    required this.lat,
-    required this.lon,
-  });
+  const Coord({required this.lat, required this.lon});
 
   factory Coord.fromJson(Map<String, dynamic> json) {
-    return Coord(
-      lat: json['lat'].toDouble(),
-      lon: json['lon'].toDouble(),
-    );
+    return Coord(lat: json['lat'].toDouble(), lon: json['lon'].toDouble());
   }
 }
 
@@ -207,9 +195,7 @@ class Coord {
 class Rain {
   final double threeHours;
 
-  const Rain({
-    required this.threeHours,
-  });
+  const Rain({required this.threeHours});
 
   factory Rain.fromJson(Map<String, dynamic> json) {
     return Rain(threeHours: json['3h'] ?? 0.0);
@@ -220,13 +206,9 @@ class Rain {
 class Sys {
   final String pod;
 
-  const Sys({
-    required this.pod,
-  });
+  const Sys({required this.pod});
 
   factory Sys.fromJson(Map<String, dynamic> json) {
-    return Sys(
-      pod: json['pod'] ?? '',
-    );
+    return Sys(pod: json['pod'] ?? '');
   }
 }

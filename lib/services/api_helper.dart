@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:weather_app_tutorial/services/geolocator.dart';
+import 'package:weather_app/common/services/geolocator.dart';
 
 class ApiHelper {
   static const baseurl = "https://api.openweathermap.org/data/2.5/weather";
