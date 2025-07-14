@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:weather_app/common/services/geolocator.dart';
 import 'package:weather_app/models/hourly_weather.dart';
