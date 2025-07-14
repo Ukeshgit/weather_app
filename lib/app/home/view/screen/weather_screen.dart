@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:weather_app/app/home/view/widgets/hourly_forecast_head.dart';
 import 'package:weather_app/app/home/view/widgets/weatherInfo.dart';
 import 'package:weather_app/common/constants/text_styles.dart';
 import 'package:weather_app/common/extensions/datetime.dart';
@@ -46,6 +47,9 @@ class WeatherScreen extends ConsumerWidget {
                     ),
                     SizedBox(height: 30),
                     Weatherinfo(weather: data),
+                    SizedBox(height: 30),
+                    HourlyForecastHead(),
+                    SizedBox(height: 30),
                   ],
                 ),
               ],
