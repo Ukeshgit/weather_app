@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/common/constants/text_styles.dart';
 import 'package:weather_app/models/weather.dart';
 
 class Weatherinfo extends StatelessWidget {
@@ -7,10 +8,22 @@ class Weatherinfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        WeatherInfoTile(title: weather.main.temp.toString(), value: "dd"),
-      ],
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 30.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          WeatherInfoTile(title: "Temp", value: weather.main.temp.toString()),
+          WeatherInfoTile(
+            title: "Wind",
+            value: "${weather.wind.speed.toString()}km/hr",
+          ),
+          WeatherInfoTile(
+            title: "Humidity",
+            value: "${weather.main.humidity.toString()}%",
+          ),
+        ],
+      ),
     );
   }
 }
@@ -22,6 +35,11 @@ class WeatherInfoTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [Text(title), Text(value)]);
+    return Column(
+      children: [
+        Text(title, style: TextStyles.subtitleText),
+        Text(value, style: TextStyles.subtitleText),
+      ],
+    );
   }
 }
