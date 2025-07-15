@@ -6,6 +6,8 @@ import 'package:weather_app/common/services/api_helper.dart';
 void main() {
   runApp(ProviderScope(child: const MainApp()));
   print(ApiHelper.getCurrentWeather());
+  // print("--------------------------");
+  // print(ApiHelper.getWeatherByCityName(city_name: "de"));
 }
 
 class MainApp extends StatelessWidget {
