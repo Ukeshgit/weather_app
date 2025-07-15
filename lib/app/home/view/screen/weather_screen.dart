@@ -27,13 +27,14 @@ class WeatherScreen extends ConsumerWidget {
                 SizedBox(width: double.infinity),
                 Column(
                   children: [
+                    SizedBox(height: 20),
                     Text(data.name.toString(), style: TextStyles.h1),
                     SizedBox(height: 10),
                     Text(
                       DateTime.now().dateTime.toString(),
                       style: TextStyles.subtitleText,
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: 40),
 
                     SizedBox(
                       height: 260,
@@ -41,16 +42,16 @@ class WeatherScreen extends ConsumerWidget {
                         "assets/icons/${data.weather[0].icon.replaceAll('n', 'd')}.png",
                       ),
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: 40),
                     Text(
                       data.weather[0].description.toString(),
                       style: TextStyles.h1,
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: 40),
                     Weatherinfo(weather: data),
-                    SizedBox(height: 30),
+                    SizedBox(height: 40),
                     HourlyForecastHead(),
-                    SizedBox(height: 30),
+                    SizedBox(height: 10),
                     HourlyForecastList(),
                   ],
                 ),
@@ -61,7 +62,11 @@ class WeatherScreen extends ConsumerWidget {
             Text(error.toString());
           },
           loading: () {
-            return Center(child: CircularProgressIndicator());
+            return Center(
+              child: GradientContainer(
+                children: [Center(child: CircularProgressIndicator())],
+              ),
+            );
           },
         ),
       ),
