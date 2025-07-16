@@ -65,8 +65,8 @@ class FamousCitiesTile extends ConsumerWidget {
       error: (error, stackTrace) => Text(error.toString()),
       loading:
           () => Container(
-            height: 10,
-            width: 20,
+            alignment: Alignment.center,
+            padding: const EdgeInsets.all(16),
             child: const CircularProgressIndicator(),
           ),
     );

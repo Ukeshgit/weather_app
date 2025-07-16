@@ -34,7 +34,7 @@ class HourlyForecastList extends ConsumerWidget {
           ),
         );
       },
-      error: (error, stackTrace) => Text(error.toString()),
+      error: (error, stackTrace) => Text("$error".toString()),
       loading: () => const CircularProgressIndicator(),
     );
   }

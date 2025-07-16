@@ -8,6 +8,7 @@ void main() {
   print(ApiHelper.getCurrentWeather());
   // print("--------------------------");
   // print(ApiHelper.getWeatherByCityName(city_name: "de"));
+  print(ApiHelper.getWeeklyForecast());
 }
 
 class MainApp extends StatelessWidget {

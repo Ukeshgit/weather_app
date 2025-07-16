@@ -62,10 +62,14 @@ class WeatherScreen extends ConsumerWidget {
             Text(error.toString());
           },
           loading: () {
-            return Center(
-              child: GradientContainer(
-                children: [Center(child: CircularProgressIndicator())],
-              ),
+            return GradientContainer(
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [Center(child: CircularProgressIndicator())],
+                ),
+              ],
             );
           },
         ),

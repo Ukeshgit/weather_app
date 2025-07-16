@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/app/forecast/view/forecast_screen.dart';
 import 'package:weather_app/app/home/view/screen/weather_screen.dart';
 import 'package:weather_app/app/search/views/search_screen.dart';
 import 'package:weather_app/app/home/view/screen/setting_screen.dart';
-import 'package:weather_app/app/home/view/screen/sunny_screen.dart';
 import 'package:weather_app/common/constants/app_colors.dart';
 
 class Home extends StatefulWidget {
@@ -17,7 +17,7 @@ class _HomeScreenState extends State<Home> {
   List screens = [
     WeatherScreen(),
     SearchScreen(),
-    SunnyScreen(),
+    ForecastScreen(),
     SettingScreen(),
   ];
   final List<NavigationDestination> _destinations = [
