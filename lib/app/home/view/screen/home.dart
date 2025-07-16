@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/app/home/view/screen/weather_screen.dart';
-import 'package:weather_app/app/home/view/screen/search_screen.dart';
+import 'package:weather_app/app/search/views/search_screen.dart';
 import 'package:weather_app/app/home/view/screen/setting_screen.dart';
 import 'package:weather_app/app/home/view/screen/sunny_screen.dart';
 import 'package:weather_app/common/constants/app_colors.dart';

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:weather_app/app/home/view/widgets/famous_cities_view.dart';
-import 'package:weather_app/app/home/view/widgets/location_icon.dart';
-import 'package:weather_app/app/home/view/widgets/round_text_field.dart';
+import 'package:weather_app/app/search/widgets/detail_weather_screen.dart';
+import 'package:weather_app/app/search/widgets/famous_cities_view.dart';
+import 'package:weather_app/app/search/widgets/location_icon.dart';
+import 'package:weather_app/app/search/widgets/round_text_field.dart';
 import 'package:weather_app/common/constants/text_styles.dart';
 import 'package:weather_app/common/widgets/widgets.dart';
 
@@ -48,7 +49,6 @@ class _SearchScreenState extends State<SearchScreen> {
             Row(
               children: [
                 Expanded(child: RoundTextField(controller: _controller)),
-
                 SizedBox(width: 15),
                 LocationIcon(),
               ],
