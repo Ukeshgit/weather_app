@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_app/app/home/view/screen/home.dart';
+import 'package:weather_app/app/splash/splash_screen.dart';
 import 'package:weather_app/common/services/api_helper.dart';
 
 void main() {
@@ -16,6 +17,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: Home());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: SplashScreen());
   }
 }
